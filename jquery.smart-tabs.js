@@ -52,6 +52,8 @@
             tabContentTabs.hide();
             setContainerSize();
             currentTab.show();
+            tabLinks.removeClass('active');
+            tabLinks.filter('[href="#'+currentTab.attr('id')+'"]').addClass('active');
         };
 
         var setContainerSize = function(){
@@ -60,9 +62,11 @@
         };
 
         var openTab = function(tabInstance){
-            currentTab = tabInstance;
-            window.location.hash = currentTab.attr('id');
-            showCurrentTab();
+            if(tabInstance.length) {
+                currentTab = tabInstance;
+                window.location.hash = currentTab.attr('id');
+                showCurrentTab();
+            }
         };
 
         var openTabById = function(tabId){
@@ -99,21 +103,23 @@
             setContainerSize();
         };
 
-        this.openById = function(tabId){
+        this.OpenById = function(tabId){
             openTabById(tabId);
         };
 
-        this.openByNumber = function(tabNumber){
+        this.OpenByIndex = function(tabNumber){
             openTabByNumber(tabNumber);
         };
 
-        this.openNext = function(){
+        this.OpenNext = function(){
             openTabNext();
         };
 
-        this.openPrevious = function(){
+        this.OpenPrevious = function(){
             openTabPrevious();
         };
+
+        //
 
         var addPluginMarkup = function(){
 

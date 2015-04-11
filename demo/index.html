@@ -15,6 +15,11 @@
 
         <div class="well">
 
+            <a href="#" id="a1">AdjustHeight</a>
+            <a href="#" id="a2">OpenByIndex 1</a>
+            <a href="#" id="a3">openNext</a>
+            <a href="#" id="a4">openPrevious</a>
+
             <div id="container">
 
                 <ul>
@@ -88,7 +93,22 @@
 
                 });
 
-                smartTabsInstance.AdjustHeight();
+                $('#a1').click(function(){
+                    smartTabsInstance.AdjustHeight();
+                });
+
+                $('#a2').click(function(){
+                    smartTabsInstance.OpenByIndex(1);
+                });
+
+                $('#a3').click(function(){
+                    smartTabsInstance.OpenNext();
+                });
+
+                $('#a4').click(function(){
+                    smartTabsInstance.OpenPrevious();
+                });
+
             });
         </script>
     </body>
