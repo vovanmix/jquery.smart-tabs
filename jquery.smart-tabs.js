@@ -43,10 +43,18 @@
             var hashLocation = getHashLocation();
             var tabInstance  = [];
             if(hashLocation){
+                window.location.hash = '';
+                setTimeout(
+                    function(){
+                        setHashLocation(hashLocation);
+                    },
+                    100
+                );
                 tabInstance = tabContentTabs.filter(hashLocation);
             }
             if(tabInstance.length) {
                 currentTab = tabInstance;
+                scrollToCurrentTab();
             }
             else{
                 currentTab = tabContentTabs.first();
@@ -55,6 +63,13 @@
 
         var getHashLocation = function(){
             return window.location.hash;
+        };
+
+        var setHashLocation = function(hash){
+            if(history.pushState) {
+                history.pushState(null, null, hash);
+            }
+            //window.location.hash = currentTab.attr('id');
         };
 
         var showCurrentTab = function(){
@@ -75,35 +90,44 @@
             tabContent.css('height', height);
         };
 
-        var openTab = function(tabInstance){
+        var openTab = function(tabInstance, scroll){
             if(tabInstance.length) {
                 currentTab = tabInstance;
-                if(history.pushState) {
-                    history.pushState(null, null, '#'+currentTab.attr('id'));
-                }
-                //window.location.hash = currentTab.attr('id');
+
+                setHashLocation('#'+currentTab.attr('id'));
+
                 showCurrentTab();
+
+                if(scroll){
+                    scrollToCurrentTab();
+                }
             }
         };
 
-        var openTabById = function(tabId){
+        var openTabById = function(tabId, scroll){
             var tab = tabContentTabs.filter('#'+tabId);
-            openTab(tab);
+            openTab(tab, scroll);
         };
 
-        var openTabByNumber = function(tabNumber){
+        var openTabByNumber = function(tabNumber, scroll){
             var tab = tabContentTabs.filter(':eq( '+tabNumber+' )');
-            openTab(tab);
+            openTab(tab, scroll);
         };
 
-        var openTabNext = function(){
+        var openTabNext = function(scroll){
             var tab = tabContentTabs.filter('#'+currentTab.attr('id')).next();
-            openTab(tab);
+            openTab(tab, scroll);
         };
 
-        var openTabPrevious = function(){
+        var openTabPrevious = function(scroll){
             var tab = tabContentTabs.filter('#'+currentTab.attr('id')).prev();
-            openTab(tab);
+            openTab(tab, scroll);
+        };
+
+        var scrollToCurrentTab = function(){
+            $('html, body').animate({
+                scrollTop: tabElement.offset().top - 20
+            }, 2000);
         };
 
 
@@ -124,20 +148,24 @@
             setContainerSize();
         };
 
-        this.OpenById = function(tabId){
-            openTabById(tabId);
+        this.OpenById = function(tabId, scroll){
+            openTabById(tabId, scroll);
         };
 
-        this.OpenByIndex = function(tabNumber){
-            openTabByNumber(tabNumber);
+        this.OpenByIndex = function(tabNumber, scroll){
+            openTabByNumber(tabNumber, scroll);
         };
 
-        this.OpenNext = function(){
-            openTabNext();
+        this.OpenNext = function(scroll){
+            openTabNext(scroll);
         };
 
-        this.OpenPrevious = function(){
-            openTabPrevious();
+        this.OpenPrevious = function(scroll){
+            openTabPrevious(scroll);
+        };
+
+        this.ScrollTo = function(){
+            scrollToCurrentTab();
         };
 
         //
