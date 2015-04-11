@@ -1,0 +1,23 @@
+.smart-tabs-container{
+
+}
+.smart-tabs-container > ul{
+
+}
+
+.smart-tabs-container > ul li{
+	display: inline-block;
+	margin: 10px;
+}
+
+.smart-tabs-container > ul li a{
+	text-decoration: none;
+}
+
+.smart-tabs-container > div{
+	position: relative;
+	overflow: hidden;
+}
+.smart-tabs-container > div > div{
+	position: absolute;
+}
