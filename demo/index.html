@@ -97,18 +97,22 @@
 
                 $('#a1').click(function(){
                     smartTabsInstance.AdjustHeight();
+                    return false;
                 });
 
                 $('#a2').click(function(){
                     smartTabsInstance.OpenByIndex(1);
+                    return false;
                 });
 
                 $('#a3').click(function(){
                     smartTabsInstance.OpenNext();
+                    return false;
                 });
 
                 $('#a4').click(function(){
                     smartTabsInstance.OpenPrevious();
+                    return false;
                 });
 
             });
