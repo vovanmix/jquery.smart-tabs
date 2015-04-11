@@ -40,12 +40,21 @@
         };
 
         var getInitialTab = function(){
-            //todo: handle hashes
-            currentTab = tabContentTabs.first();
+            var hashLocation = getHashLocation();
+            var tabInstance  = [];
+            if(hashLocation){
+                tabInstance = tabContentTabs.filter(hashLocation);
+            }
+            if(tabInstance.length) {
+                currentTab = tabInstance;
+            }
+            else{
+                currentTab = tabContentTabs.first();
+            }
         };
 
-        var getHasLocation = function(){
-
+        var getHashLocation = function(){
+            return window.location.hash;
         };
 
         var showCurrentTab = function(){
