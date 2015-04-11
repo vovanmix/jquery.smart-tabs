@@ -12,9 +12,12 @@
 
 .smart-tabs-container > ul li a{
 	text-decoration: none;
+	padding: 10px;
+	background: #eee;
 }
 .smart-tabs-container > ul li a.active{
 	background: #aaa;
+	color: #fff;
 }
 
 .smart-tabs-container > div{
