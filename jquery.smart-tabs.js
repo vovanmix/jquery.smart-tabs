@@ -61,8 +61,13 @@
             tabContentTabs.hide();
             setContainerSize();
             currentTab.show();
+
+            var tabId = currentTab.attr('id');
+
             tabLinks.removeClass('active');
-            tabLinks.filter('[href="#'+currentTab.attr('id')+'"]').addClass('active');
+            tabLinks.filter('[href="#'+tabId+'"]').addClass('active');
+
+            settings.onShowTab(tabId);
         };
 
         var setContainerSize = function(){
@@ -104,6 +109,10 @@
             var tabId = $(this).attr('href').replace('#', '');
             openTabById(tabId);
             return false;
+        };
+
+        var clickInsideTab = function(){
+           settings.onClickInsideTab($(this).attr('id'));
         };
 
 
@@ -151,6 +160,8 @@
             addPluginMarkup();
 
             tabLinks.bind('click.smartTabs', openTabFromLink);
+
+            tabContentTabs.bind('click.smartTabs', clickInsideTab);
 
             initPlugin();
 
