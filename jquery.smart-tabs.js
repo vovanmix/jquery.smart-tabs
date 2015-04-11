@@ -99,7 +99,7 @@
                 showCurrentTab();
 
                 if(scroll){
-                    scrollToCurrentTab();
+                    scrollToCurrentTab(scroll);
                 }
             }
         };
@@ -124,9 +124,11 @@
             openTab(tab, scroll);
         };
 
-        var scrollToCurrentTab = function(){
+        var scrollToCurrentTab = function(scroll){
+            var margin = (scroll === true || typeof scroll == 'undefined') ? 20 :  scroll;
+
             $('html, body').animate({
-                scrollTop: tabElement.offset().top - 20
+                scrollTop: tabElement.offset().top - margin
             }, 2000);
         };
 
@@ -164,8 +166,8 @@
             openTabPrevious(scroll);
         };
 
-        this.ScrollTo = function(){
-            scrollToCurrentTab();
+        this.ScrollTo = function(margin){
+            scrollToCurrentTab(margin);
         };
 
         //
