@@ -17,6 +17,63 @@
 
             <div id="container">
 
+                <ul>
+                    <li>
+                        <a href="#tab-1">Tab 1</a>
+                    </li>
+                    <li>
+                        <a href="#tab-2">Tab 2</a>
+                    </li>
+                    <li>
+                        <a href="#tab-3">Tab 3</a>
+                    </li>
+                </ul>
+
+                <div>
+
+                    <div id="tab-1">
+
+                        <div>
+                            <h3>Methods:</h3>
+                            <ul>
+                                <li>Adjust height of current opened tab</li>
+                                <li>Open specific tab by id</li>
+                                <li>Open specific tab by number</li>
+                                <li>Open next tab</li>
+                                <li>Open previous tab</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div id="tab-2">
+
+                        <div>
+                            <h3>Features:</h3>
+                            <ul>
+                                <li>Ready to go style out of the box</li>
+                                <li>Set height for a tab when open it</li>
+                                <li>Tab opens on page load using a hash tag in a address</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div id="tab-3">
+
+                        <div>
+                            <h3>Events:</h3>
+                            <ul>
+                                <li>Show new tab</li>
+                                <li>Click inside the tab</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
             </div>
 
         </div>
@@ -27,9 +84,11 @@
         <script type="text/javascript" src="../jquery.smart-tabs.js"></script>
         <script type="text/javascript">
             $(document).ready(function(){
-                $('#container').smartTabs({
+                var smartTabsInstance = $('#container').smartTabs({
 
                 });
+
+                smartTabsInstance.AdjustHeight();
             });
         </script>
     </body>

@@ -1,7 +1,5 @@
 /* ===========================================================
  * jquery.smart-tabs.js
- * v 1.0.0 April 11 2015
- * ===========================================================
  * Copyright 2015 Vladimir Mikhaylovskiy.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,15 +20,55 @@
     $.fn.smartTabs = function(options) {
 
         var settings = $.extend({
-
+            //Events:
+            onClickInsideTab: function(tabId){},
+            onShowTab: function(tabId){}
         }, options);
 
-        var formElementContainer;
-        var formElement;
+        var tabElement;
+        var tabHeader;
+        var tabContent;
+        var tabLinks;
+
+        var currentTab;
+
+        //Core functions:
+        var initPlugin = function(){
+
+        };
+
+        var getHasTag = function(){
+
+        };
+
+
+        //Methods:
+        this.AdjustHeight = function(){
+
+        };
+
+        this.openById = function(tabId){
+
+        };
+
+        this.openByNumber = function(tabNumber){
+
+        };
+
+        this.openNext = function(){
+
+        };
+
+        this.openPrevious = function(){
+
+        };
 
         var addPluginMarkup = function(){
-            formElement.wrap('<div class="smart-tabs-container"></div>');
-            formElementContainer = formElement.parent();
+
+            tabElement.addClass("smart-tabs-container");
+            var tabHeader = tabElement.find('>ul');
+            var tabLinks = tabHeader.find('a');
+            var tabContent = tabElement.find('>div');
 
         };
 
@@ -40,9 +78,11 @@
             }
             $(this).attr('smartTabs', 'true');
 
-            formElement = $(this);
+            tabElement = $(this);
 
             addPluginMarkup();
+
+            initPlugin();
 
         });
 
