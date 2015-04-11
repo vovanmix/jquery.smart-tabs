@@ -78,7 +78,10 @@
         var openTab = function(tabInstance){
             if(tabInstance.length) {
                 currentTab = tabInstance;
-                window.location.hash = currentTab.attr('id');
+                if(history.pushState) {
+                    history.pushState(null, null, '#'+currentTab.attr('id'));
+                }
+                //window.location.hash = currentTab.attr('id');
                 showCurrentTab();
             }
         };
